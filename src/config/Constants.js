@@ -1,3 +1,3 @@
-export const API = "https://stormy-atoll-04651.herokuapp.com";
+export const API = "https://nameless-wave-16831.herokuapp.com";
 
 // http://localhost:5000
