@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-links {
+  @apply m-1 p-2 text-xl lg:ml-6 lg:p-0;
+}
+
+.my-container {
+  @apply max-w-screen-xl w-11/12 m-auto;
+}
