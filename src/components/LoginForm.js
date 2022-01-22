@@ -18,11 +18,13 @@ export function LoginForm() {
 
     const navigate = useNavigate();
 
+    const guestEmail = "guest@gmail.com";
+
     async function guestLoginHandler() {
         try {
             const {data: {userId, token}, status} = await axios.post(`${API}/user/login`, {
-                email,
-                password
+                email: guestEmail,
+                password: "testing"
             });
 
             let userComingFrom = state?.from ? state.from : "/";
