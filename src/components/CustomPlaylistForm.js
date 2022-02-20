@@ -23,11 +23,6 @@ export function CustomPlaylistForm({videoId, getPlaylistByName}) {
                     videoId
                 });
 
-                let payload = {
-                    name: playlistName,
-                    playlists
-                }
-
                 if (status === 200) {
                     dispatch({ 
                         type: "CREATE_PLAYLIST", 

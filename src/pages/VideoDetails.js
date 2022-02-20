@@ -59,7 +59,6 @@ export function VideoDetails() {
         try {
             const playlist = getPlaylistByName(playlistName);
             
-
             const response = await axios.post(`${API}/playlist/${playlist._id}`, {
                 videoId
             });
