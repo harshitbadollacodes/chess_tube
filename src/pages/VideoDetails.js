@@ -119,9 +119,6 @@ export function VideoDetails() {
                 </div>
         )
     }
-    
-    // <div className={` ${modal ? "bg-c-black h-screen" : "bg-none" }`} h-screen>
-    // ${modal === true && "bg-d-gray"}
 
     return (
         <div className={`p-4 min-h-screen`}>
