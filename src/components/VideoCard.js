@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FaTrashAlt } from "react-icons/fa";
 
 export function VideoCard({videos, remove}) {
-
-
-    function removeHandler(videoId) {
-                
-    }
 
     return (
         videos.map(video => (
@@ -25,11 +19,6 @@ export function VideoCard({videos, remove}) {
                                 <p className="text-s ml-3">{video.channel.name}</p>
                             </div>
                         </Link>
-                        {remove && 
-                            <button onClick={() => removeHandler(video._id)}>
-                                <FaTrashAlt className="hover:text-red-500" />
-                            </button>
-                        }
                     </div>
             </li>
             )
