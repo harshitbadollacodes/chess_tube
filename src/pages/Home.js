@@ -5,7 +5,7 @@ export function Home() {
     return (
         <>
             <div>
-                <img src={chessBanner} className="lg:w-full lg:h-128" alt="chess Banner"/>
+                <img src={chessBanner} className="lg:w-full lg:h-144" alt="chess Banner"/>
             </div>
 
             <div className="my-container">
