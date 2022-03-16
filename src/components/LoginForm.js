@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { API } from "../config/Constants";
@@ -53,6 +53,12 @@ export function LoginForm() {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setError(null);
+        }, 3000);
+    }, [error]);
 
     return (
         <div className="lg:w-1/2 p-16 lg:p-32">

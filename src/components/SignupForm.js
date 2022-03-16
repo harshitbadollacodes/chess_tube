@@ -54,7 +54,13 @@ export function SignupForm() {
         } finally {
             setLoading(false);
         }
-    }
+    };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setError(null);
+        }, 3000);
+    }, [error]);
 
     return (
         <div className="lg:w-1/2 p-16 lg:p-32">
