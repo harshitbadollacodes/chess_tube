@@ -57,9 +57,13 @@ export function SignupForm() {
     };
 
     useEffect(() => {
-        setTimeout(() => {
+        let hideError = setTimeout(() => {
             setError(null);
         }, 3000);
+
+        return () => {
+            clearTimeout(hideError);
+        };
     }, [error]);
 
     return (
