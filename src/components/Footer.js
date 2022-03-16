@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return ( 
-        <div className="bg-white p-4 absolute bottom-0 w-full dark:bg-black dark:text-white">
+        <div className="border-t-2 border-gray-300 bg-white p-4 absolute bottom-0 w-full dark:bg-black dark:text-white">
             <div className="my-container flex justify-between">
                 <h1>Design inspired from <span>
                         <Link to="https://github.com/desaihetav" className="text-blue-900">
