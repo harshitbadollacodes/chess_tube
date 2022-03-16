@@ -9,3 +9,8 @@
 .my-container {
   @apply max-w-screen-xl w-11/12 m-auto;
 }
+
+.banner-img {
+  background: url("./images/chessBanner.jpeg")  no-repeat center center/cover;
+  height: 80vh;
+}
