@@ -12,42 +12,21 @@ export function LoginForm() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const { state } = useLocation();
     const { setIsUserLoggedIn, setToken, setUserId } = useAuthContext();
 
     const navigate = useNavigate();
 
-    const guestEmail = "guest@gmail.com";
-
     async function guestLoginHandler() {
-        try {
-            const {data: {userId, token}, status} = await axios.post(`${API}/user/login`, {
-                email: guestEmail,
-                password: "testing"
-            });
-
-            let userComingFrom = state?.from ? state.from : "/";
-
-            setupAuthHeaderForServiceCalls(token);
-
-            if (status === 200) {
-                setIsUserLoggedIn(true);
-                localStorage.setItem("userId", JSON.stringify(userId));
-                localStorage.setItem("token", JSON.stringify(token));
-                setToken(token);
-                setUserId(userId);
-                
-                navigate(userComingFrom);
-            }
-        } catch(error) {
-            console.log({error});
-            setError(error.response.data.message);
-        }
-    }
+        setEmail("guest@gmail.com");
+        setPassword("testing");
+    };
 
     async function loginFormHandler(e) {
         e.preventDefault();
+        setLoading(true);
         try {
             const {data: {userId, token}, status} = await axios.post(`${API}/user/login`, {
                 email,
@@ -70,6 +49,8 @@ export function LoginForm() {
         } catch(error) {
             console.log({error});
             setError(error.response.data.message);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -97,17 +78,20 @@ export function LoginForm() {
 
                     <input 
                         type="submit"
-                        value="login"
+                        value={loading ? "Logging in..." : "Login"}
                         className="cursor-pointer text-white text-xl w-full p-3 mt-5 bg-black"
                     />
+
+                    <button 
+                        onClick={() => guestLoginHandler()}
+                        className="cursor-pointer text-white text-xl w-full p-3 mt-5 bg-black"
+                    >
+                        Guest Credentials
+                    </button>
+
                 </form>
 
-                <button 
-                    onClick={() => guestLoginHandler()}
-                    className="cursor-pointer text-white text-xl w-full p-3 mt-5 bg-black"
-                >
-                        Login as Guest
-                </button>
+                
 
                 <p 
                     className="text-center mt-4"
@@ -115,7 +99,7 @@ export function LoginForm() {
                     Don't have an account? 
                     <Link 
                         to="/signup" 
-                        className="text-blue-500"
+                        className="text-blue-500 hover:text-blue-800"
                     >
                         Sign up Here
                     </Link>

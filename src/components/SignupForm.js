@@ -11,6 +11,8 @@ export function SignupForm() {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
+
+    const [loading, setLoading] = useState(false);
     
     const [error, setError] = useState(null);
 
@@ -22,6 +24,7 @@ export function SignupForm() {
 
     async function signupFormHandler(e) {
         e.preventDefault();
+        setLoading(true);
         try {
             if (firstName.length && lastName.length && email.length && password.length && (password === confirmPassword)) {
                 const { data: { token, userId }, status } = await axios.post(`${API}/user/signup`, {
@@ -48,6 +51,8 @@ export function SignupForm() {
         } catch(error) {
             console.log({error});
             setError(error.response.data.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -97,12 +102,13 @@ export function SignupForm() {
                         onChange={(e) => setConfirmPassword(e.target.value)} 
                     />
 
-                    <button 
+                    <input
                         type="submit" 
+                        value={loading ? "Signing up..." : "Sign Up"}
                         className="text-white text-xl w-full p-3 mt-5 bg-black"
-                    >
-                        Signup
-                    </button>
+                    />
+                        
+                    
                 </form>
                 <p className="mt-4 text-l text-center">
                     Have an account? 
