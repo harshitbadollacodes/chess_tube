@@ -6,11 +6,10 @@ import { useAuthContext } from '../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { setupAuthHeaderForServiceCalls } from '../UtilityFunctions/UtilityFunctions';
 
-
 export function LoginForm() {
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -72,6 +71,7 @@ export function LoginForm() {
                 <form onSubmit={loginFormHandler}>
                     <input 
                         type="text" 
+                        value={email}
                         required
                         className="w-full text-xl p-2.5 border-2 mb-5 border-gray-900 text-black" 
                         placeholder="Enter Email"
@@ -80,6 +80,7 @@ export function LoginForm() {
 
                     <input 
                         type="password" 
+                        value={password}
                         required
                         className="w-full text-xl p-2.5 border-2 border-gray-900 text-black" 
                         placeholder="Enter Password"
@@ -99,9 +100,7 @@ export function LoginForm() {
                         Guest Credentials
                     </button>
 
-                </form>
-
-                
+                </form>                
 
                 <p 
                     className="text-center mt-4"
