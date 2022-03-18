@@ -19,7 +19,7 @@ export function LoginForm() {
 
     const navigate = useNavigate();
 
-    async function guestLoginHandler() {
+    function guestLoginHandler() {
         setEmail("guest@gmail.com");
         setPassword("testing");
     };
